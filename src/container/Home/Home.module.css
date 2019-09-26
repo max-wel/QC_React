@@ -1,0 +1,102 @@
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 60em;
+  padding: 2em;
+  margin: auto;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.navHeader {
+  text-decoration: none;
+  color: inherit;
+}
+.navItem {
+  text-decoration: none;
+  margin-left: 2em;
+  color: rgb(104, 103, 103);
+  font-weight: 600;
+}
+.navItem:nth-child(1) {
+  padding-bottom: 0.3em;
+  border-bottom: 3px solid rgb(10, 230, 10);
+}
+.mainContent {
+  margin-top: 5.5em;
+  text-align: center;
+  min-height: calc(100vh - 12em);
+}
+.heading {
+  font-size: 2.5em;
+  font-weight: 600;
+  margin-bottom: 0.6em;
+}
+.subHeading {
+  font-size: 1.5em;
+  line-height: 1.5em;
+}
+.btn {
+  margin-top: 2.5em;
+  padding: 1.4em 3em;
+  border: none;
+  background-color: blue;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.3em;
+  color: white;
+}
+
+.btn:hover {
+  background-color: white;
+  border: 1px solid blue;
+  color: blue;
+}
+.footer {
+  height: 2.5em;
+}
+.footerText {
+  font-size: 1.2em;
+  text-align: center;
+}
+
+@media only screen and (max-device-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+  .navHeader {
+    font-size: 1.5em;
+    margin-bottom: 0.7em;
+  }
+  .navLinks {
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+  }
+  .navItem {
+    font-size: 0.9em;
+    margin: 0;
+  }
+  .mainContent {
+    margin-top: 2.5em;
+  }
+  .heading {
+    font-size: 1.8em;
+  }
+  .subHeading {
+    font-size: 1em;
+  }
+  .btn {
+    padding: 1.2em 1em;
+    font-size: 1em;
+    margin-top: 1.5em;
+  }
+  .footerText {
+    font-size: 0.9em;
+  }
+}
