@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './Home.module.css';
 import { FaHeart } from 'react-icons/fa';
+import styles from './Home.module.css';
 
 const Home = () => {
   return (
@@ -32,11 +32,13 @@ const Home = () => {
         </main>
         <footer className={styles.footer}>
           <p className={styles.footerText}>
-            Made with{' '}
+            Made with
+{' '}
             <FaHeart
               size="1.2em"
               style={{ verticalAlign: 'text-top', color: 'red' }}
-            />{' '}
+            />
+{' '}
             by Maxwellington
           </p>
         </footer>
