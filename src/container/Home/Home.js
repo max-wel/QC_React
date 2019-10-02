@@ -11,14 +11,14 @@ const Home = () => {
           <h2 className={styles.navHeader}>Quick Credit</h2>
 
           <div className={styles.navLinks}>
-            <Link to="" className={styles.navItem}>
+            <Link to="/" className={styles.navItem}>
               Home
             </Link>
-            <Link to="" className={styles.navItem}>
+            <Link to="/login" className={styles.navItem}>
               Login
             </Link>
-            <Link to="" className={styles.navItem}>
-              Signup
+            <Link to="/register" className={styles.navItem}>
+              Register
             </Link>
           </div>
         </nav>
