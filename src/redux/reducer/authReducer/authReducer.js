@@ -29,6 +29,11 @@ const reducer = (state = initialState, { type, payload }) => {
         isAuthenticated: false,
         error: payload
       };
+    case types.CLEAR_ERRORS:
+      return {
+        ...state,
+        error: ''
+      };
     default:
       return state;
   }

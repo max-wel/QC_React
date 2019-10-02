@@ -1,36 +1,37 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Login } from './Login';
+import { Register } from './Register';
 import Input from '../../component/Input/Input';
 import Button from '../../component/Button/Button';
 
-describe('<Login /> test', () => {
+describe('<Register /> test', () => {
   it('renders correctly', () => {
-    const wrapper = shallow(<Login clearErrors={() => {}} />);
-    wrapper.setState({ data: {}, errors: {} });
-    expect(wrapper.find(Input)).toHaveLength(2);
+    const wrapper = shallow(<Register clearErrors={() => {}} />);
+    expect(wrapper.find(Input)).toHaveLength(5);
     expect(wrapper.find(Button)).toHaveLength(1);
   });
 
   it('should set errors when passed invalid form data', () => {
-    const wrapper = shallow(<Login clearErrors={() => {}} />);
+    const wrapper = shallow(<Register clearErrors={() => {}} />);
     wrapper
       .instance()
       .handleChange({ target: { name: 'email', value: 'invalid' } });
     expect(wrapper.instance().state.errors).toHaveProperty('email');
   });
 
-  it('should call login on submit', () => {
-    const login = jest.fn();
-    const wrapper = shallow(<Login login={login} clearErrors={() => {}} />);
+  it('should call register on submit', () => {
+    const register = jest.fn();
+    const wrapper = shallow(
+      <Register register={register} clearErrors={() => {}} />
+    );
     wrapper.instance().handleSubmit({ preventDefault: () => {} });
-    expect(login).toHaveBeenCalledTimes(1);
+    expect(register).toHaveBeenCalledTimes(1);
   });
 
-  it('renders error on login error', () => {
-    const authError = 'login error';
+  it('renders error on register error', () => {
+    const authError = 'register error';
     const wrapper = shallow(
-      <Login authError={authError} clearErrors={() => {}} />
+      <Register authError={authError} clearErrors={() => {}} />
     );
     expect(wrapper.contains(authError)).toBeTruthy();
   });

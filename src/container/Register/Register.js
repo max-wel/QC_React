@@ -2,16 +2,18 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Joi from 'joi-browser';
-import Navbar from '../../component/Navbar/Navbar';
 import Input from '../../component/Input/Input';
 import Button from '../../component/Button/Button';
+import Navbar from '../../component/Navbar/Navbar';
+import { register, clearErrors } from '../../redux/actions/authActions';
 import { validate, validateProperty } from '../../utils/validator';
-import 'bulma/css/bulma.css';
-import { login, clearErrors } from '../../redux/actions/authActions';
 
-export class Login extends Component {
+export class Register extends Component {
   state = {
     data: {
+      firstName: '',
+      lastName: '',
+      address: '',
       email: '',
       password: ''
     },
@@ -19,6 +21,9 @@ export class Login extends Component {
   };
 
   schema = {
+    firstName: Joi.string().required(),
+    lastName: Joi.string().required(),
+    address: Joi.string().required(),
     email: Joi.string()
       .email()
       .required(),
@@ -47,7 +52,7 @@ export class Login extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.login(this.state.data);
+    this.props.register(this.state.data);
   };
 
   render() {
@@ -60,16 +65,46 @@ export class Login extends Component {
           <div className="container">
             <div className="columns is-centered">
               <div className="column is-5">
+                <p className="is-size-5" style={{ marginBottom: '0.5em' }}>
+                  Register
+                </p>
                 <form action="" className="box" onSubmit={this.handleSubmit}>
                   {authError && (
                     <p className="help is-danger is-size-6">{authError}</p>
                   )}
                   <Input
                     type="text"
+                    label="First Name"
+                    name="firstName"
+                    placeholder="Ciroma"
+                    value={data.firstName}
+                    onChange={this.handleChange}
+                    errors={errors}
+                  />
+                  <Input
+                    type="text"
+                    label="Last Name"
+                    name="lastName"
+                    placeholder="Adekunle"
+                    value={data.lastName}
+                    onChange={this.handleChange}
+                    errors={errors}
+                  />
+                  <Input
+                    type="text"
                     placeholder="example@gmail.com"
                     label="Email"
                     name="email"
                     value={data.email}
+                    onChange={this.handleChange}
+                    errors={errors}
+                  />
+                  <Input
+                    type="text"
+                    label="Address"
+                    name="address"
+                    placeholder="Bode Thomas Gardens"
+                    value={data.address}
                     onChange={this.handleChange}
                     errors={errors}
                   />
@@ -83,15 +118,14 @@ export class Login extends Component {
                     errors={errors}
                   />
                   <Button
-                    label="Login"
+                    label="Register"
                     style="is-medium is-fullwidth is-link"
                     disabled={validate(data, this.schema)}
                     loading={loading}
                   />
                   <p>
-                    Don't have an account? <Link to="/register">Register</Link>
+                    Already have an account? <Link to="/login">Login</Link>
                   </p>
-                  <Link to="">Forgot password?</Link>
                 </form>
               </div>
             </div>
@@ -111,10 +145,10 @@ const mapStateToProps = ({ auth }) => {
 
 const mapDispatchToProps = {
   clearErrors,
-  login: userData => login(userData)
+  register: userData => register(userData)
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Login);
+)(Register);
