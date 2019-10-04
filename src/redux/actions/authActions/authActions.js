@@ -1,5 +1,5 @@
-import * as types from '../types/authTypes';
-import http from '../../utils/httpService';
+import * as types from '../../types/authTypes';
+import http from '../../../utils/httpService';
 
 const loading = () => {
   return {

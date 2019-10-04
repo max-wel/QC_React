@@ -1,9 +1,9 @@
 import configureMockStore from 'redux-mock-store';
 import moxios from 'moxios';
 import thunk from 'redux-thunk';
-import * as types from '../types/authTypes';
+import * as types from '../../types/authTypes';
 import { login, register } from './authActions';
-import http from '../../utils/httpService';
+import http from '../../../utils/httpService';
 
 const mockStore = configureMockStore([thunk]);
 const store = mockStore({});

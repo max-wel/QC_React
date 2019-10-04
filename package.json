@@ -9,6 +9,7 @@
     "classnames": "^2.2.6",
     "joi-browser": "^13.4.0",
     "prop-types": "^15.7.2",
+    "query-string": "^6.8.3",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-icons": "^3.7.0",

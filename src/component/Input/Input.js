@@ -3,7 +3,16 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 
 const Input = props => {
-  const { type, value, placeholder, label, name, onChange, errors } = props;
+  const {
+    type,
+    value,
+    placeholder,
+    label,
+    name,
+    onChange,
+    errors,
+    isRequired
+  } = props;
   const classes = cx('input is-medium is-hovered', {
     'is-danger': errors[name]
   });
@@ -18,6 +27,7 @@ const Input = props => {
           value={value}
           name={name}
           onChange={onChange}
+          required={isRequired}
         />
       </div>
       {errors[name] && <span className="help is-danger">{errors[name]}</span>}
@@ -25,10 +35,17 @@ const Input = props => {
   );
 };
 
+Input.defaultProps = {
+  errors: {},
+  isRequired: false
+};
+
 Input.propTypes = {
   type: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
-  label: PropTypes.string.isRequired
+  label: PropTypes.string.isRequired,
+  errors: PropTypes.object,
+  isRequired: PropTypes.bool
 };
 
 export default Input;
