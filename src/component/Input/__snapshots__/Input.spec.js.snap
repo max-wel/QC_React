@@ -17,6 +17,7 @@ exports[`<Input /> tests renders an <Input /> component 1`] = `
       name=""
       onChange={[MockFunction]}
       placeholder=""
+      required={false}
       type=""
     />
   </div>

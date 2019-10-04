@@ -5,7 +5,10 @@ import Joi from 'joi-browser';
 import Input from '../../component/Input/Input';
 import Button from '../../component/Button/Button';
 import Navbar from '../../component/Navbar/Navbar';
-import { register, clearErrors } from '../../redux/actions/authActions';
+import {
+  register,
+  clearErrors
+} from '../../redux/actions/authActions/authActions';
 import { validate, validateProperty } from '../../utils/validator';
 
 export class Register extends Component {

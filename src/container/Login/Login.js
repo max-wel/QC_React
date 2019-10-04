@@ -7,7 +7,10 @@ import Input from '../../component/Input/Input';
 import Button from '../../component/Button/Button';
 import { validate, validateProperty } from '../../utils/validator';
 import 'bulma/css/bulma.css';
-import { login, clearErrors } from '../../redux/actions/authActions';
+import {
+  login,
+  clearErrors
+} from '../../redux/actions/authActions/authActions';
 
 export class Login extends Component {
   state = {
@@ -91,7 +94,7 @@ export class Login extends Component {
                   <p>
                     Don't have an account? <Link to="/register">Register</Link>
                   </p>
-                  <Link to="">Forgot password?</Link>
+                  <Link to="/forgot_password">Forgot password?</Link>
                 </form>
               </div>
             </div>
