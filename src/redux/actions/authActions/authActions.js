@@ -1,3 +1,6 @@
+import jwtDecode from 'jwt-decode';
+import React from 'react';
+import { Redirect } from 'react-router-dom';
 import * as types from '../../types/authTypes';
 import http from '../../../utils/httpService';
 
@@ -19,7 +22,7 @@ const authFailure = error => {
   };
 };
 
-export const login = userData => async dispatch => {
+export const login = (userData, { history, location }) => async dispatch => {
   try {
     // dispatch loading
     dispatch(loading());
@@ -29,6 +32,9 @@ export const login = userData => async dispatch => {
     // set token in localstorage
     localStorage.setItem('token', token);
     dispatch(authSuccess(user));
+    const { state } = location || {};
+    const path = state ? state.from.pathname : '/dashboard';
+    window.location = path;
   } catch (error) {
     const { data } = error.response || {};
     const { error: authError } = data || {};
@@ -57,4 +63,10 @@ export const clearErrors = () => {
   return {
     type: types.CLEAR_ERRORS
   };
+};
+
+export const setCurrentUser = () => dispatch => {
+  const token = localStorage.getItem('token');
+  const user = jwtDecode(token);
+  dispatch(authSuccess(user));
 };

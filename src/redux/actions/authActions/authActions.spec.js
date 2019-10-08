@@ -32,7 +32,7 @@ describe('Auth actions test', () => {
       const request = moxios.requests.mostRecent();
       request.respondWith({ status: 200, response });
     });
-    return store.dispatch(login()).then(() => {
+    return store.dispatch(login(null, {})).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
@@ -49,7 +49,7 @@ describe('Auth actions test', () => {
       const request = moxios.requests.mostRecent();
       request.respondWith({ status: 400, response });
     });
-    return store.dispatch(login()).then(() => {
+    return store.dispatch(login(null, {})).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
@@ -74,7 +74,7 @@ describe('Auth actions test', () => {
     });
   });
 
-  it('should dispatch AUTH_FAILURE on failed login', () => {
+  it('should dispatch AUTH_FAILURE on failed registration', () => {
     const response = {
       error: 'error'
     };
