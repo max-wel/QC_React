@@ -50,7 +50,8 @@ export class Login extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.login(this.state.data);
+    const { history, location } = this.props;
+    this.props.login(this.state.data, { history, location });
   };
 
   render() {
@@ -114,7 +115,7 @@ const mapStateToProps = ({ auth }) => {
 
 const mapDispatchToProps = {
   clearErrors,
-  login: userData => login(userData)
+  login: (userData, routeProps) => login(userData, routeProps)
 };
 
 export default connect(

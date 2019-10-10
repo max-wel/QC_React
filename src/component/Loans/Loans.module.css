@@ -1,0 +1,12 @@
+.loanContainer,
+.repayments-container {
+  width: 100%;
+  max-width: 55em;
+  margin: 1.2em auto;
+  padding: 0 1.5em;
+}
+.mainHeading {
+  text-align: center;
+  font-size: 2em;
+  margin-top: 1em;
+}

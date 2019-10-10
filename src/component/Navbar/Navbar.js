@@ -33,7 +33,7 @@ class Navbar extends Component {
           </div>
           <div className={cx('navbar-menu', navClass)}>
             <div className="navbar-end">
-              <Link
+              {/* <Link
                 to="/login"
                 className="navbar-item is-size-5 has-background-light"
               >
@@ -41,7 +41,8 @@ class Navbar extends Component {
               </Link>
               <Link to="/register" className="navbar-item is-size-5">
                 Signup
-              </Link>
+              </Link> */}
+              {this.props.children}
             </div>
           </div>
         </div>
